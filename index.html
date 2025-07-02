@@ -1,0 +1,1222 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vishwanath Aitha | Data/Business Analyst Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts for Inter and Poppins (similar to Youware's modern sans-serif) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- EmailJS CDN -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <style>
+        :root {
+            --primary-bg: #1a202c; /* Dark Slate Blue */
+            --secondary-bg: #2d3748; /* Darker Gray */
+            --text-color: #e2e8f0; /* Light Gray */
+            --accent-color: #6366f1; /* Indigo */
+            --hover-color: #4f46e5; /* Darker Indigo */
+            --border-color: #4a5568; /* Gray-600 */
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--primary-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+            color: white;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--secondary-bg);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent-color);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--hover-color);
+        }
+
+        /* Navbar Styling */
+        .navbar {
+            background-color: rgba(26, 32, 44, 0.9); /* Slightly transparent dark background */
+            backdrop-filter: blur(10px); /* Frosted glass effect */
+            border-bottom: 1px solid var(--border-color);
+        }
+        .nav-link {
+            position: relative;
+            color: var(--text-color);
+            padding: 0.5rem 1rem;
+            transition: color 0.3s ease;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover {
+            color: white;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: radial-gradient(circle at top left, var(--secondary-bg) 0%, transparent 50%),
+                        radial-gradient(circle at bottom right, var(--secondary-bg) 0%, transparent 50%),
+                        var(--primary-bg);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            padding: 2rem; /* Add some padding for smaller screens */
+        }
+        .hero-title-gradient {
+            background: linear-gradient(90deg, #CAD1D8, #A0AEC0, #718096); /* Lighter Gray to Darker Gray */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0px 0px 15px rgba(255, 255, 255, 0.2), 0px 0px 30px rgba(255, 255, 255, 0.1); /* More subtle glow */
+        }
+        .hero-subtitle-text { /* Changed from hero-subtitle-gradient */
+            font-size: 2.5rem; /* Adjusted size for subtitle */
+            font-weight: 600; /* Adjusted weight for subtitle */
+            color: #a78bfa; /* Accent color for subtitle */
+            margin-bottom: 2rem; /* Adjusted margin */
+        }
+
+        /* Data Network Pattern */
+        @keyframes dataFlow {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 100% 100%; }
+        }
+
+        .data-network-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                radial-gradient(circle at 10% 20%, rgba(79, 70, 229, 0.05) 1px, transparent 1px),
+                radial-gradient(circle at 90% 80%, rgba(79, 70, 229, 0.05) 1px, transparent 1px),
+                linear-gradient(0deg, rgba(79, 70, 229, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(79, 70, 229, 0.02) 1px, transparent 1px);
+            background-size: 40px 40px, 40px 40px, 40px 40px, 40px 40px;
+            animation: dataFlow 20s linear infinite;
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        /* Hero Corner Elements */
+        @keyframes floatEffect {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(5deg); }
+        }
+
+        .hero-corner-element {
+            position: absolute;
+            font-size: 4rem; /* Larger size for background elements */
+            color: rgba(255, 255, 255, 0.08); /* Very subtle white */
+            animation: floatEffect 8s ease-in-out infinite alternate;
+            z-index: 0; /* Ensure they are in the background */
+        }
+        .hero-corner-element.top-left { top: 5%; left: 5%; animation-delay: 0s; }
+        .hero-corner-element.top-right { top: 5%; right: 5%; animation-delay: 2s; }
+        .hero-corner-element.bottom-left { bottom: 5%; left: 5%; animation-delay: 4s; }
+        .hero-corner-element.bottom-right { bottom: 5%; right: 5%; animation-delay: 6s; }
+
+
+        /* Top Icon with Lines */
+        .top-icon-container {
+            position: relative;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
+        .top-icon {
+            font-size: 3rem;
+            color: var(--accent-color);
+            position: relative;
+            z-index: 2; /* Ensure icon is above lines */
+        }
+        .top-icon-line {
+            position: absolute;
+            height: 2px;
+            background: linear-gradient(to right, transparent, var(--accent-color), transparent);
+            width: calc(50% - 2.5rem); /* Half width minus icon size */
+            z-index: 1;
+        }
+        .top-icon-line.left {
+            left: 0;
+            background: linear-gradient(to left, var(--accent-color), transparent);
+        }
+        .top-icon-line.right {
+            right: 0;
+            background: linear-gradient(to right, var(--accent-color), transparent);
+        }
+        /* Adjust line width for icon spacing */
+        .top-icon-line.left {
+            left: calc(50% - 2.5rem - 100px); /* Adjust based on icon size and desired gap */
+            width: 100px; /* Example width */
+        }
+        .top-icon-line.right {
+            right: calc(50% - 2.5rem - 100px); /* Adjust based on icon size and desired gap */
+            width: 100px; /* Example width */
+        }
+        @media (max-width: 768px) {
+            .top-icon-line {
+                width: calc(50% - 2rem); /* Adjust for smaller screens */
+            }
+            .top-icon-line.left {
+                left: calc(50% - 2rem - 50px);
+                width: 50px;
+            }
+            .top-icon-line.right {
+                right: calc(50% - 2rem - 50px);
+                width: 50px;
+            }
+        }
+
+
+        /* Business Data Analyst Badge (Removed, but keeping class for reference if needed) */
+        /* .bda-badge { ... } */
+
+        /* Intro Text */
+        .intro-text {
+            max-width: 800px;
+            margin: 0 auto 3rem auto;
+            font-size: 1.125rem; /* text-lg */
+            color: #cbd5e1; /* slate-300 */
+        }
+        .intro-text strong {
+            color: white; /* Highlighted words */
+            font-weight: 600;
+        }
+
+        /* Call to Action Buttons */
+        .cta-buttons {
+            display: flex;
+            flex-wrap: wrap; /* Allow wrapping on small screens */
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .btn-connect {
+            background: linear-gradient(90deg, #38bdf8, #818cf8); /* Blue to Indigo */
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .btn-connect:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(90deg, #818cf8, #38bdf8); /* Reverse gradient */
+        }
+
+        .btn-portfolio {
+            background: transparent;
+            color: var(--accent-color);
+            padding: 1rem 2.5rem;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: inset 0 0 0 2px var(--accent-color); /* Outlined effect */
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .btn-portfolio:hover {
+            transform: translateY(-3px);
+            background-color: rgba(99, 102, 241, 0.1); /* Subtle fill on hover */
+            box-shadow: inset 0 0 0 2px var(--hover-color);
+            color: var(--hover-color);
+        }
+        .btn-resume {
+            background: linear-gradient(90deg, #f87171, #ef4444); /* Red gradient for resume */
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .btn-resume:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(90deg, #ef4444, #f87171); /* Reverse gradient on hover */
+        }
+
+        .explore-text {
+            font-size: 0.9rem;
+            color: #9ca3af; /* gray-400 */
+            margin-top: 1rem;
+        }
+
+
+        /* Section Styling */
+        .section-container {
+            background-color: var(--secondary-bg);
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            padding: 2.5rem;
+            margin-bottom: 3rem;
+            border: 1px solid var(--border-color);
+            opacity: 0; /* For scroll animation */
+            transform: translateY(20px); /* For scroll animation */
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .section-container.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-heading {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+            padding-bottom: 1rem;
+            color: white;
+        }
+        .section-heading::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-color);
+            border-radius: 2px;
+        }
+
+        /* Skill Card Styling */
+        .skill-card {
+            background-color: var(--primary-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .skill-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            border-color: var(--accent-color);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            background-color: #2c3440; /* Slightly lighter dark on hover */
+        }
+        .skill-icon {
+            font-size: 3rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+        .skill-name {
+            font-weight: 600;
+            color: white;
+            font-size: 1.125rem;
+        }
+        .skill-category {
+            font-size: 0.9rem;
+            color: var(--text-color);
+            margin-top: 0.5rem;
+        }
+
+        /* Experience Item Styling */
+        .experience-item {
+            border-left: 3px solid var(--accent-color);
+            padding-left: 1.5rem;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: 0;
+            width: 16px;
+            height: 16px;
+            background-color: var(--accent-color);
+            border-radius: 50%;
+            border: 2px solid var(--primary-bg);
+        }
+        .experience-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: white;
+        }
+        .experience-company {
+            font-size: 1.125rem;
+            color: var(--text-color);
+        }
+        .experience-date {
+            font-size: 0.9rem;
+            color: #9ca3af; /* Gray-400 */
+            margin-bottom: 0.5rem;
+        }
+        .experience-description {
+            color: var(--text-color);
+        }
+
+        /* Project Card Styling */
+        .project-card {
+            background-color: var(--primary-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 0.75rem;
+            overflow: hidden;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+        }
+        .project-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .project-content {
+            padding: 1.5rem;
+        }
+        .project-title-card {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+        .project-description {
+            font-size: 0.95rem;
+            color: var(--text-color);
+            margin-bottom: 1rem;
+        }
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--accent-color);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        .project-link:hover {
+            color: var(--hover-color);
+        }
+
+        /* Button Styling */
+        .btn-primary {
+            background-color: var(--accent-color);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .btn-primary:hover {
+            background-color: var(--hover-color);
+            transform: translateY(-2px);
+        }
+
+        /* Contact Form */
+        .form-input {
+            background-color: var(--primary-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            width: 100%;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .form-input:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.5); /* Focus ring */
+        }
+        .form-input::placeholder {
+            color: #9ca3af;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 10000; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0,0,0,0.7); /* Black w/ opacity */
+            backdrop-filter: blur(5px); /* Blur background */
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background-color: var(--secondary-bg);
+            padding: 2.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.5);
+            max-width: 800px;
+            width: 90%;
+            position: relative;
+            animation: fadeIn 0.3s ease-out;
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .close-button {
+            color: #aaa;
+            float: right;
+            font-size: 2rem;
+            font-weight: bold;
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            cursor: pointer;
+            transition: color 0.2s ease-in-out;
+        }
+
+        .close-button:hover,
+        .close-button:focus {
+            color: white;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .modal-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent-color);
+        }
+
+        .modal-body {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--text-color);
+            max-height: 60vh; /* Limit height for scrollability */
+            overflow-y: auto;
+            padding-right: 0.5rem; /* For scrollbar */
+        }
+
+        /* Back to Top Button */
+        #back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 0.75rem 1rem;
+            border-radius: 9999px; /* Fully rounded */
+            font-size: 1.5rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease-in-out;
+            opacity: 0;
+            visibility: hidden;
+            z-index: 9000;
+        }
+        #back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        #back-to-top:hover {
+            background-color: var(--hover-color);
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body class="bg-primary-bg">
+
+    <!-- Navbar -->
+    <nav class="navbar fixed top-0 left-0 w-full z-50 py-4">
+        <div class="container mx-auto flex justify-between items-center px-4">
+            <a href="#hero" class="text-2xl font-bold text-white">Vishwanath Aitha</a>
+            <div class="hidden md:flex space-x-6">
+                <a href="#about" class="nav-link">About</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#experience" class="nav-link">Experience</a>
+                <a href="#education" class="nav-link">Education</a> <!-- Reordered -->
+                <a href="#projects" class="nav-link">Projects</a> <!-- Reordered -->
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+            <!-- Mobile Menu Button (Hamburger) -->
+            <button id="mobile-menu-button" class="md:hidden text-white text-2xl focus:outline-none">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu" class="md:hidden hidden bg-primary-bg absolute top-full left-0 w-full py-4 text-center border-t border-border-color">
+            <a href="#about" class="block py-2 nav-link" onclick="toggleMobileMenu()">About</a>
+            <a href="#skills" class="block py-2 nav-link" onclick="toggleMobileMenu()">Skills</a>
+            <a href="#experience" class="block py-2 nav-link" onclick="toggleMobileMenu()">Experience</a>
+            <a href="#education" class="block py-2 nav-link" onclick="toggleMobileMenu()">Education</a> <!-- Reordered -->
+            <a href="#projects" class="block py-2 nav-link" onclick="toggleMobileMenu()">Projects</a> <!-- Reordered -->
+            <a href="#contact" class="block py-2 nav-link" onclick="toggleMobileMenu()">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero-section text-center px-4">
+        <div class="data-network-pattern"></div> <!-- Data Network Pattern -->
+
+        <!-- Data Analytics Elements in Corners -->
+        <i class="fas fa-chart-area hero-corner-element top-left"></i>
+        <i class="fas fa-database hero-corner-element top-right"></i>
+        <i class="fas fa-code-branch hero-corner-element bottom-left"></i>
+        <i class="fas fa-server hero-corner-element bottom-right"></i>
+
+        <div class="relative z-10 flex flex-col items-center">
+            <!-- Top Icon with Lines -->
+            <div class="top-icon-container">
+                <div class="top-icon-line left"></div>
+                <i class="fas fa-chart-bar top-icon"></i> <!-- Chart icon -->
+                <div class="top-icon-line right"></div>
+            </div>
+
+            <h1 class="text-6xl md:text-7xl font-extrabold mb-2 hero-title-gradient leading-tight">
+                Vishwanath Aitha
+            </h1>
+            <!-- Subtitle text -->
+            <p class="hero-subtitle-text">
+                Business Data Analyst
+            </p>
+
+            <!-- Introductory Text -->
+            <p class="intro-text text-lg leading-relaxed text-text-color">
+                Transforming complex data into actionable business insights. Leveraging expertise honed across diverse industries including <strong>Healthcare</strong>, <strong>Logistics</strong>, and <strong>Supply Chain</strong>, I deliver impactful solutions through predictive modeling, business intelligence, and strategic analytics.
+            </p>
+
+            <!-- Call to Action Buttons -->
+            <div class="cta-buttons">
+                <a href="#contact" class="btn-connect">
+                    <i class="fas fa-envelope"></i> Let's Connect
+                </a>
+                <a href="#about" class="btn-portfolio">
+                    View Portfolio <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+                <a href="https://drive.google.com/file/d/1NKr6QMivfX374SzLzotc31ZNRLwLpCyt/view?usp=sharing" target="_blank" class="btn-resume">
+                    <i class="fas fa-file-pdf"></i> View Resume
+                </a>
+            </div>
+            <p class="explore-text">Explore Analytics</p>
+        </div>
+    </section>
+
+    <div class="container mx-auto px-4 py-12">
+
+        <!-- About Me Section -->
+        <section id="about" class="section-container relative">
+            <h2 class="section-heading">About Me</h2>
+            <p class="text-lg leading-relaxed text-text-color">
+                As a highly analytical and results-oriented <strong>Business & Data Analyst</strong> with over three years of progressive experience, I specialize in transforming complex data into actionable business intelligence that drives strategic growth. My career has been dedicated to bridging the critical gap between intricate business challenges and robust data-driven solutions across diverse sectors, including <strong>Healthcare</strong>, <strong>Logistics</strong>, and <strong>Supply Chain</strong>. I excel in identifying operational inefficiencies, gathering precise requirements, and conducting thorough gap analyses to inform impactful process improvements.
+            </p>
+            <p class="text-lg leading-relaxed text-text-color mt-4">
+                My technical proficiency spans a comprehensive toolkit, including advanced SQL for data extraction and optimization, Python (NumPy, Pandas, Matplotlib, Seaborn) and R for statistical analysis and predictive modeling, and leading visualization tools like Tableau and Power BI for creating dynamic, intuitive dashboards. I am adept at leveraging Agile methodologies (JIRA, Confluence, Kanban) to ensure iterative development and collaborative project delivery. Passionate about leveraging data to empower informed decision-making, I consistently strive to automate reporting workflows, optimize database performance, and develop sophisticated analytical models that yield measurable business value.
+            </p>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="section-container">
+            <h2 class="section-heading">My Skills</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <div class="skill-card">
+                    <i class="fas fa-database skill-icon"></i>
+                    <h3 class="skill-name">SQL</h3>
+                    <p class="skill-category">Data Extraction, Optimization</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fab fa-python skill-icon"></i>
+                    <h3 class="skill-name">Python</h3>
+                    <p class="skill-category">Analysis, Visualization, ML</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-chart-line skill-icon"></i>
+                    <h3 class="skill-name">Tableau</h3>
+                    <p class="skill-category">Dynamic Dashboards, KPIs</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-chart-bar skill-icon"></i>
+                    <h3 class="skill-name">Power BI</h3>
+                    <p class="skill-category">Business Intelligence, Reporting</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-file-excel skill-icon"></i>
+                    <h3 class="skill-name">Advanced Excel</h3>
+                    <p class="skill-category">VBA, Macros, Pivot Tables</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-chart-pie skill-icon"></i>
+                    <h3 class="skill-name">R Studio</h3>
+                    <p class="skill-category">Statistical Analysis</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-cloud skill-icon"></i>
+                    <h3 class="skill-name">Cloud Technologies</h3>
+                    <p class="skill-category">SAP, AWS, Azure</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-project-diagram skill-icon"></i>
+                    <h3 class="skill-name">Agile Methodologies</h3>
+                    <p class="skill-category">JIRA, Confluence, Kanban</p>
+                </div>
+            </div>
+            <div class="mt-8 text-center">
+                <h3 class="text-xl font-semibold text-white mb-4">Other Key Skills:</h3>
+                <div class="flex flex-wrap justify-center gap-3">
+                    <span class="skill-tag bg-gray-700 text-gray-200 px-4 py-2 rounded-full text-sm">SPSS</span>
+                    <span class="skill-tag bg-gray-700 text-gray-200 px-4 py-2 rounded-full text-sm">Informatica</span>
+                    <span class="skill-tag bg-gray-700 text-gray-200 px-4 py-2 rounded-full text-sm">UAT</span>
+                    <span class="skill-tag bg-gray-700 text-gray-200 px-4 py-2 rounded-full text-sm">A/B Testing</span>
+                    <span class="skill-tag bg-gray-700 text-gray-200 px-4 py-2 rounded-full text-sm">Hypothesis Testing</span>
+                    <span class="skill-tag bg-gray-700 text-gray-200 px-4 py-2 rounded-full text-sm">Inventory Management</span>
+                    <span class="skill-tag bg-gray-700 text-gray-200 px-4 py-2 rounded-full text-sm">Forecasting</span>
+                    <span class="skill-tag bg-gray-700 text-gray-200 px-4 py-2 rounded-full text-sm">Budgeting</span>
+                    <span class="skill-tag bg-gray-700 text-gray-200 px-4 py-2 rounded-full text-sm">Presentation</span>
+                    <span class="skill-tag bg-gray-700 text-gray-200 px-4 py-2 rounded-full text-sm">Waterfall</span>
+                    <span class="skill-tag bg-gray-700 text-gray-200 px-4 py-2 rounded-full text-sm">Windows</span>
+                    <span class="skill-tag bg-gray-700 text-gray-200 px-4 py-2 rounded-full text-sm">Linux</span>
+                    <span class="skill-tag bg-gray-700 text-gray-200 px-4 py-2 rounded-full text-sm">Splunk Web Framework</span>
+                    <span class="skill-tag bg-gray-700 text-gray-200 px-4 py-2 rounded-full text-sm">Regression</span>
+                    <span class="skill-tag bg-gray-700 text-gray-200 px-4 py-2 rounded-full text-sm">Classification</span>
+                    <span class="skill-tag bg-gray-700 text-gray-200 px-4 py-2 rounded-full text-sm">Decision Trees</span>
+                    <span class="skill-tag bg-gray-700 text-gray-200 px-4 py-2 rounded-full text-sm">KNN</span>
+                    <span class="skill-tag bg-gray-700 text-gray-200 px-4 py-2 rounded-full text-sm">Naïve Bayes</span>
+                    <span class="skill-tag bg-gray-700 text-gray-200 px-4 py-2 rounded-full text-sm">K-means</span>
+                    <span class="skill-tag bg-gray-700 text-gray-200 px-4 py-2 rounded-full text-sm">Random Forest</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="section-container">
+            <h2 class="section-heading">Experience</h2>
+            <div class="space-y-8">
+                <!-- Cigna Corporation -->
+                <div class="experience-item">
+                    <h3 class="experience-title">Data Analyst</h3>
+                    <p class="experience-company">Cigna Corporation, Bloomfield, CT</p>
+                    <p class="experience-date">Jun 2024 - Current</p>
+                    <ul class="list-disc list-inside space-y-1 experience-description">
+                        <li>Automated data ingestion and reporting workflows using Informatica, which reduced manual intervention and improved data validation.</li>
+                        <li>Collaborated with cross-functional teams to define data structures and mapping strategies for ETL processes, ensuring seamless data integration and availability.</li>
+                        <li>Leveraged Tableau and Power BI to create dynamic dashboards, maintain KPIs, and ensure data integrity and accuracy.</li>
+                        <li>Utilized SQL and Oracle Database for data extraction, migration, and query optimization to support real-time data reporting and decision-making processes. Reduced report generation time significantly by optimizing SQL queries and restructuring existing databases.</li>
+                        <li>Prepared budget allocation versus expense reporting for cost and margin analysis from federal revenue data.</li>
+                        <li>Created business requirement documentation of analytical methodologies, ensuring consistency and reproducibility in future analysis.</li>
+                    </ul>
+                </div>
+
+                <!-- Mahindra Logistics Ltd -->
+                <div class="experience-item">
+                    <h3 class="experience-title">Business Analyst</h3>
+                    <p class="experience-company">Mahindra Logistics Ltd, India</p>
+                    <p class="experience-date">Jan 2022 - Nov 2023</p>
+                    <ul class="list-disc list-inside space-y-1 experience-description">
+                        <li>Led JAD sessions to gather requirements and prioritize supply chain needs, resulting in a 15% improvement in on-time shipment rates.</li>
+                        <li>Designed and executed test cases using data models to validate system functionalities, ensuring accurate tracking of shipment statuses and warehouse inventory levels.</li>
+                        <li>Supported stakeholders with KPI reporting, including On-Time Delivery, Success Rate, and Demand Forecasts, using Tableau and Excel.</li>
+                        <li>Deployed advanced statistical analysis to identify inefficiencies in delivery routes and measure the impact of process improvements, reducing transportation costs by 10% and improving delivery accuracy.</li>
+                        <li>Configured data integration and analysis for unstructured data from shipment tracking systems to forecast delivery volumes, predict delays, and identify opportunities to enhance delivery success rates.</li>
+                        <li>Implemented specifications for Data Warehouse ETL Processes and collaborated with data analysts and end users for informational requirements to design robust data solutions.</li>
+                        <li>Integrated Tableau data-driven alerts and automated notifications, enabling monitoring of key metrics and decreasing response time to critical business events by 75%.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education" class="section-container">
+            <h2 class="section-heading">Education & Certifications</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="p-6 bg-primary-bg rounded-lg border border-border-color shadow-md flex flex-col items-center text-center">
+                    <div class="bg-white p-3 rounded-lg shadow-inner mb-4 flex items-center justify-center w-24 h-24">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/4/4f/Northern_Arizona_Athletics_logo.svg" alt="Northern Arizona University Logo" class="w-full h-full object-contain">
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-1">Master of Science in Business Analytics</h3>
+                    <p class="text-lg text-text-color">Northern Arizona University, AZ</p>
+                </div>
+                <div class="p-6 bg-primary-bg rounded-lg border border-border-color shadow-md flex flex-col items-center text-center">
+                    <div class="bg-white p-3 rounded-lg shadow-inner mb-4 flex items-center justify-center w-24 h-24">
+                        <img src="https://upload.wikimedia.org/wikipedia/en/2/29/Osmania_University_Logo.png" alt="Osmania University Logo" class="w-full h-full object-contain">
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-1">Bachelor of Business Administration</h3>
+                    <p class="text-lg text-text-color">Osmania University Hyderabad, India</p>
+                </div>
+                <div class="p-6 bg-primary-bg rounded-lg border border-border-color shadow-md md:col-span-2 flex items-center justify-center flex-col sm:flex-row text-center sm:text-left">
+                    <div class="bg-white p-3 rounded-lg shadow-inner mb-4 sm:mb-0 sm:mr-4 flex items-center justify-center w-24 h-24">
+                        <img src="https://images.credly.com/images/d41de2b7-cbc2-47ec-bcf1-ebecbe83872f/twitter_thumb_201604_GCC_badge_DA_1000x1000.png" alt="Google Data Analytics Certificate" class="w-full h-full object-contain">
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold text-white mb-1">Google Data Analytics Certificate</h3>
+                        <p class="text-lg text-text-color">Certificate of Completion</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="section-container">
+            <h2 class="section-heading">Projects</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1: Cash Management -->
+                <div class="project-card">
+                    <img src="https://placehold.co/600x400/3182CE/FFFFFF?text=Cash+Management" alt="Cash Management Project" class="project-image">
+                    <div class="project-content">
+                        <h3 class="project-title-card">Cash Management at Nippon India Mutual Funds</h3>
+                        <p class="project-description">Analyzed the company’s cash flow to ensure financial obligations were met and liquidity was maintained effectively.</p>
+                        <button class="project-link view-details-btn" data-project-id="cash-management">View Details <i class="fas fa-arrow-right ml-2"></i></button>
+                    </div>
+                </div>
+                <!-- Project 2: Descriptive Analytics -->
+                <div class="project-card">
+                    <img src="https://placehold.co/600x400/38B2AC/FFFFFF?text=Descriptive+Analytics" alt="Descriptive Analytics Project" class="project-image">
+                    <div class="project-content">
+                        <h3 class="project-title-card">Descriptive Analytics</h3>
+                        <p class="project-description">Used MS Excel, Tableau, and R to visualize and interpret descriptive statistics for data-driven insights.</p>
+                        <button class="project-link view-details-btn" data-project-id="descriptive-analytics">View Details <i class="fas fa-arrow-right ml-2"></i></button>
+                    </div>
+                </div>
+                <!-- Project 3: Python for Business Analytics -->
+                <div class="project-card">
+                    <img src="https://placehold.co/600x400/667EEA/FFFFFF?text=Python+Analytics" alt="Python for Business Analytics Project" class="project-image">
+                    <div class="project-content">
+                        <h3 class="project-title-card">Python for Business Analytics</h3>
+                        <p class="project-description">Developed data visualizations using Python, leveraging libraries like pandas, Matplotlib, and regression techniques for business data analysis.</p>
+                        <button class="project-link view-details-btn" data-project-id="python-analytics">View Details <i class="fas fa-arrow-right ml-2"></i></button>
+                    </div>
+                </div>
+                <!-- Project 4: Campaign Prediction -->
+                <div class="project-card">
+                    <img src="https://placehold.co/600x400/9F7AEA/FFFFFF?text=Campaign+Prediction" alt="Campaign Prediction Project" class="project-image">
+                    <div class="project-content">
+                        <h3 class="project-title-card">Campaign Prediction</h3>
+                        <p class="project-description">Built models using Logistic Regression and Random Forest in Python and RapidMiner to predict campaign success.</p>
+                        <button class="project-link view-details-btn" data-project-id="campaign-prediction">View Details <i class="fas fa-arrow-right ml-2"></i></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section-container">
+            <h2 class="section-heading">Get in Touch</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <p class="text-lg text-text-color mb-4">
+                        I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
+                        Feel free to reach out!
+                    </p>
+                    <div class="space-y-4">
+                        <p class="flex items-center text-text-color"><i class="fas fa-phone-alt mr-3 text-accent-color"></i> (928)-266-7971</p>
+                        <p class="flex items-center text-text-color"><i class="fas fa-envelope mr-3 text-accent-color"></i> aithavishwanath3@gmail.com</p>
+                        <a href="https://www.linkedin.com/in/vishwanath-aitha-6078032ba/" target="_blank" class="flex items-center text-text-color hover:text-white transition-colors"><i class="fab fa-linkedin mr-3 text-accent-color"></i> LinkedIn Profile</a>
+                    </div>
+                </div>
+                <div>
+                    <form id="contact-form" class="space-y-4">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-text-color mb-1">Name</label>
+                            <input type="text" id="name" name="user_name" class="form-input" placeholder="Your Name" required>
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-text-color mb-1">Email</label>
+                            <input type="email" id="email" name="user_email" class="form-input" placeholder="your@example.com" required>
+                        </div>
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-text-color mb-1">Message</label>
+                            <textarea id="message" name="message" rows="5" class="form-input" placeholder="Your message..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary w-full justify-center">
+                            Send Message <i class="fas fa-paper-plane ml-2"></i>
+                        </button>
+                        <div id="form-status" class="mt-4 text-center text-sm"></div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <footer class="text-center py-6 text-gray-400 text-sm">
+            &copy; 2024 Vishwanath Aitha. All rights reserved.
+        </footer>
+    </div>
+
+    <!-- Modal Structure -->
+    <div id="projectModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h3 id="modalTitle" class="modal-title"></h3>
+            <div id="modalBody" class="modal-body">
+                <p id="modalText"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="hidden">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Initialize EmailJS with your Public Key (User ID)
+        (function() {
+            emailjs.init("uH13vMk7wtK0z4ZgR"); // Public Key (User ID) from EmailJS
+        })();
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        function toggleMobileMenu() {
+            mobileMenu.classList.toggle('hidden');
+            const icon = mobileMenuButton.querySelector('i');
+            if (mobileMenu.classList.contains('hidden')) {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            } else {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            }
+        }
+        mobileMenuButton.addEventListener('click', toggleMobileMenu);
+
+        // Close mobile menu when clicking outside (optional, but good UX)
+        window.addEventListener('click', function(event) {
+            if (!mobileMenu.contains(event.target) && !mobileMenuButton.contains(event.target) && !mobileMenu.classList.contains('hidden')) {
+                toggleMobileMenu();
+            }
+        });
+
+        // Project Modal Logic
+        const projectData = {
+            "cash-management": {
+                title: "Cash Management at Nippon India Mutual Funds",
+                description: "This project involved a deep dive into the cash flow operations of Nippon India Mutual Funds. The primary objective was to analyze the company’s liquidity position, ensuring that financial obligations could be met efficiently while maintaining optimal cash reserves. Key activities included forecasting cash inflows and outflows, identifying potential shortfalls or surpluses, and developing strategies to optimize cash utilization. This analysis provided critical insights for financial planning and risk management, contributing to the firm's financial stability.",
+                pdfUrl: "https://drive.google.com/file/d/1R9U3pxgmM2LmZHIHW4UMJcayAiX5WMXH/view?usp=sharing" // Google Drive PDF link
+            },
+            "descriptive-analytics": {
+                title: "Descriptive Analytics",
+                description: "In this project, I leveraged MS Excel, Tableau, and R to perform comprehensive descriptive analytics on various datasets. The goal was to summarize and interpret key characteristics of the data to gain actionable insights. This involved creating various visualizations, calculating central tendencies, dispersion, and distribution, and identifying patterns and anomalies. The project demonstrated proficiency in data cleaning, transformation, and presentation, translating raw data into clear, understandable narratives for data-driven decision-making.",
+                excelUrl: "https://docs.google.com/spreadsheets/d/1tSZkNJFoKP5z4BL7pV1_8ViSX2CS7Hrj/edit?usp=sharing&ouid=112011074882422715029&rtpof=true&sd=true",
+                tableauUrl: "https://drive.google.com/file/d/1kFT61a5sEI_6B4xJBipGFQgBuSTnaw26/view?usp=sharing"
+            },
+            "python-analytics": {
+                title: "Python for Business Analytics",
+                description: "This section showcases various projects where I applied Python for data analysis, visualization, and predictive modeling, demonstrating my ability to derive actionable insights from complex datasets.",
+                subProjects: [
+                    {
+                        name: "Python Project 1",
+                        description: "A detailed analysis involving data manipulation and visualization.",
+                        datasetUrl: "https://drive.google.com/file/d/1QysfMnv0eRuzAqHCO1iG53vUqKgip2RK/view?usp=sharing",
+                        pythonCodeUrl: "https://colab.research.google.com/drive/1T6CeSn1pNU8entJLxKtiy8-gXh3TQVKw?usp=sharing",
+                        reportUrl: "https://drive.google.com/file/d/1JjUfPd75l8a8ahubrPFZgaQbWGTak5g4/view?usp=sharing"
+                    },
+                    {
+                        name: "Python Project 2",
+                        description: "Focused on applying statistical methods for business insights.",
+                        datasetUrl: "https://drive.google.com/file/d/1MrevaCko_wJRuxDTAPFF-C9Wsgc7fvG5/view?usp=sharing",
+                        pythonCodeUrl: "https://colab.research.google.com/drive/1sSV7gvNubJKmp7piJ-OLkTl6JSN7HyJS?usp=sharing",
+                        reportUrl: "https://drive.google.com/file/d/1EqS4vzIGimnYqKL9bAiQ0-x_PzgOhuk0/view?usp=sharing"
+                    },
+                    {
+                        name: "Python Project 3",
+                        description: "Exploration of data visualization techniques for business reporting.",
+                        datasetUrl: "https://drive.google.com/file/d/1N8N-Uw_IlWKsWcBTktQTYsSAGvcqzTbp/view?usp=sharing",
+                        pythonCodeUrl: "https://colab.research.google.com/drive/1YmAxQuDAG7e3rHm00I7w7kSdBiuxyrkv?usp=sharing",
+                        reportUrl: "https://drive.google.com/file/d/1cOO0H11QcxUGIC47jP7UqYvw5IVnZYow/view?usp=sharing"
+                    },
+                    {
+                        name: "Python Final Project",
+                        description: "A comprehensive project combining data analysis and predictive modeling.",
+                        datasetUrl: "https://drive.google.com/file/d/14YUsF9QlaupcH0JGMcCUblTSUA5lIs7B/view?usp=sharing",
+                        pythonCodeUrl: "https://colab.research.google.com/drive/1n7MFLXBE8MJNoIUy79LE3aWW5szdqq9W?usp=sharing",
+                        reportUrl: "https://drive.google.com/file/d/1ahR7L1u1K0EpUP6XyZCDdyymc3lKqYgd/view?usp=sharing"
+                    }
+                ]
+            },
+            "campaign-prediction": {
+                title: "Campaign Prediction",
+                description: "This project involved building predictive models to forecast the success of marketing campaigns, leveraging various analytical tools and presenting insights for optimizing marketing ROI.",
+                excelUrl: "https://docs.google.com/spreadsheets/d/1EEB0WNF9ojtXZnjsVvMSBVQpa-Z_X3-S/edit?usp=sharing&ouid=112011074882422715029&rtpof=true&sd=true",
+                tableauUrl: "https://drive.google.com/file/d/1aQU-g4R4H83VHNXD0JIv1ilpuFL6wE75/view?usp=sharing",
+                pythonCodeUrl: "https://colab.research.google.com/drive/1j1ocLb2Z-7D0Evgh22uv4Pt68fhmj-2Z?usp=sharing",
+                rapidminerReportUrl: "https://drive.google.com/file/d/1gCn14-JZpESIPSxSKxQraKVV4O6OUxIO/view?usp=sharing",
+                presentationUrl: "https://drive.google.com/file/d/1A3OPrVn1hYlRgmYozVNJsryo1jqPlNPE/view?usp=sharing",
+                posterUrl: "https://drive.google.com/file/d/1P9uSXJknyDRFji1NcI7nI_Kmu8TQsPVj/view?usp=sharing",
+                finalReportUrl: "https://drive.google.com/file/d/1A3rbrjWv0MIsraRw86hGMsrvumyeyAwL/view?usp=sharing"
+            }
+        };
+
+        const viewDetailsButtons = document.querySelectorAll('.view-details-btn');
+        const projectModal = document.getElementById('projectModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalText = document.getElementById('modalText');
+        const closeButton = document.querySelector('.close-button');
+
+        viewDetailsButtons.forEach(button => {
+            button.addEventListener('click', (event) => {
+                const projectId = event.target.dataset.projectId;
+                const project = projectData[projectId];
+
+                if (project) {
+                    modalTitle.textContent = project.title;
+                    modalText.innerHTML = ''; // Clear previous content
+
+                    // Handle Python for Business Analytics with sub-projects
+                    if (projectId === "python-analytics" && project.subProjects) {
+                        const mainDescriptionParagraph = document.createElement('p');
+                        mainDescriptionParagraph.textContent = project.description;
+                        modalText.appendChild(mainDescriptionParagraph);
+
+                        project.subProjects.forEach(subProject => {
+                            const subProjectTitle = document.createElement('h4');
+                            subProjectTitle.className = 'text-xl font-semibold text-white mt-6 mb-2';
+                            subProjectTitle.textContent = subProject.name;
+                            modalText.appendChild(subProjectTitle);
+
+                            const subProjectDescription = document.createElement('p');
+                            subProjectDescription.className = 'text-base text-text-color mb-3';
+                            subProjectDescription.textContent = subProject.description;
+                            modalText.appendChild(subProjectDescription);
+
+                            const linksContainer = document.createElement('div');
+                            linksContainer.className = 'flex flex-wrap gap-2 mb-4';
+
+                            if (subProject.datasetUrl) {
+                                const datasetButton = document.createElement('a');
+                                datasetButton.href = subProject.datasetUrl;
+                                datasetButton.target = '_blank';
+                                datasetButton.className = 'btn-primary text-sm px-3 py-1';
+                                datasetButton.innerHTML = '<i class="fas fa-table mr-1"></i> View Dataset';
+                                linksContainer.appendChild(datasetButton);
+                            }
+                            if (subProject.pythonCodeUrl) {
+                                const codeButton = document.createElement('a');
+                                codeButton.href = subProject.pythonCodeUrl;
+                                codeButton.target = '_blank';
+                                codeButton.className = 'btn-primary text-sm px-3 py-1';
+                                codeButton.innerHTML = '<i class="fab fa-python mr-1"></i> View Python Code';
+                                linksContainer.appendChild(codeButton);
+                            }
+                            if (subProject.reportUrl) {
+                                const reportButton = document.createElement('a');
+                                reportButton.href = subProject.reportUrl;
+                                reportButton.target = '_blank';
+                                reportButton.className = 'btn-primary text-sm px-3 py-1';
+                                reportButton.innerHTML = '<i class="fas fa-file-alt mr-1"></i> View Report';
+                                linksContainer.appendChild(reportButton);
+                            }
+                            modalText.appendChild(linksContainer);
+                        });
+
+                    } else {
+                        // Existing logic for other projects
+                        const descriptionParagraph = document.createElement('p');
+                        descriptionParagraph.textContent = project.description;
+                        modalText.appendChild(descriptionParagraph);
+
+                        // Add PDF button if pdfUrl exists
+                        if (project.pdfUrl) {
+                            const pdfButton = document.createElement('a');
+                            pdfButton.href = project.pdfUrl;
+                            pdfButton.target = '_blank'; // Open in new tab
+                            pdfButton.className = 'btn-primary mt-4 inline-flex items-center mr-2'; // Tailwind classes for styling
+                            pdfButton.innerHTML = '<i class="fas fa-file-pdf mr-2"></i> View/Download PDF';
+                            modalText.appendChild(pdfButton);
+                        }
+
+                        // Add Excel button if excelUrl exists
+                        if (project.excelUrl) {
+                            const excelButton = document.createElement('a');
+                            excelButton.href = project.excelUrl;
+                            excelButton.target = '_blank'; // Open in new tab
+                            excelButton.className = 'btn-primary mt-4 inline-flex items-center mr-2';
+                            excelButton.innerHTML = '<i class="fas fa-file-excel mr-2"></i> View or Download Excel File';
+                            modalText.appendChild(excelButton);
+                        }
+
+                        // Add Tableau button if tableauUrl exists
+                        if (project.tableauUrl) {
+                            const tableauButton = document.createElement('a');
+                            tableauButton.href = project.tableauUrl;
+                            tableauButton.target = '_blank'; // Open in new tab
+                            tableauButton.className = 'btn-primary mt-4 inline-flex items-center mr-2';
+                            tableauButton.innerHTML = '<i class="fas fa-chart-bar mr-2"></i> View Tableau Dashboard';
+                            modalText.appendChild(tableauButton);
+                        }
+
+                        // Add RapidMiner Report button if rapidminerReportUrl exists
+                        if (project.rapidminerReportUrl) {
+                            const rapidminerReportButton = document.createElement('a');
+                            rapidminerReportButton.href = project.rapidminerReportUrl;
+                            rapidminerReportButton.target = '_blank';
+                            rapidminerReportButton.className = 'btn-primary mt-4 inline-flex items-center mr-2';
+                            rapidminerReportButton.innerHTML = '<i class="fas fa-file-alt mr-2"></i> View RapidMiner Report';
+                            modalText.appendChild(rapidminerReportButton);
+                        }
+
+                        // Add Presentation button if presentationUrl exists
+                        if (project.presentationUrl) {
+                            const presentationButton = document.createElement('a');
+                            presentationButton.href = project.presentationUrl;
+                            presentationButton.target = '_blank';
+                            presentationButton.className = 'btn-primary mt-4 inline-flex items-center mr-2';
+                            presentationButton.innerHTML = '<i class="fas fa-file-powerpoint mr-2"></i> View Presentation';
+                            modalText.appendChild(presentationButton);
+                        }
+
+                        // Add Poster button if posterUrl exists
+                        if (project.posterUrl) {
+                            const posterButton = document.createElement('a');
+                            posterButton.href = project.posterUrl;
+                            posterButton.target = '_blank';
+                            posterButton.className = 'btn-primary mt-4 inline-flex items-center mr-2';
+                            posterButton.innerHTML = '<i class="fas fa-image mr-2"></i> View Poster';
+                            modalText.appendChild(posterButton);
+                        }
+
+                        // Add Final Report button if finalReportUrl exists
+                        if (project.finalReportUrl) {
+                            const finalReportButton = document.createElement('a');
+                            finalReportButton.href = project.finalReportUrl;
+                            finalReportButton.target = '_blank';
+                            finalReportButton.className = 'btn-primary mt-4 inline-flex items-center';
+                            finalReportButton.innerHTML = '<i class="fas fa-file-alt mr-2"></i> View Final Report';
+                            modalText.appendChild(finalReportButton);
+                        }
+                    }
+
+                    projectModal.style.display = 'flex'; // Show modal
+                }
+            });
+        });
+
+        closeButton.addEventListener('click', () => {
+            projectModal.style.display = 'none';
+        });
+
+        window.addEventListener('click', (event) => {
+            if (event.target == projectModal) {
+                projectModal.style.display = 'none';
+            }
+        });
+
+        // Send email function
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            const formStatus = document.getElementById('form-status');
+            formStatus.textContent = 'Sending message...';
+            formStatus.className = 'mt-4 text-center text-sm text-gray-400';
+
+            emailjs.sendForm('service_avc7omu', 'template_nz00ton', this)
+                .then(function() {
+                    formStatus.textContent = 'Message sent successfully!';
+                    formStatus.className = 'mt-4 text-center text-sm text-green-500';
+                    document.getElementById('contact-form').reset(); // Clear the form
+                }, function(error) {
+                    formStatus.textContent = 'Failed to send message. Please try again later.';
+                    formStatus.className = 'mt-4 text-center text-sm text-red-500';
+                    console.error('EmailJS Error:', error);
+                });
+        });
+
+
+        // Scroll Animation Logic (Intersection Observer)
+        const sections = document.querySelectorAll('.section-container');
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15 // Trigger when 15% of the section is visible
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target); // Stop observing once animated
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+
+        // Back to Top Button Logic
+        const backToTopButton = document.getElementById('back-to-top');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) { // Show button after scrolling 300px
+                backToTopButton.classList.add('show');
+            } else {
+                backToTopButton.classList.remove('show');
+            }
+        });
+
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+</html>
